@@ -6,9 +6,9 @@ class UserInfo {
 	public:
 		string Name;
 		string Class;
-		int Health;
-		int Damage;
-		int XP;
+		int Health = 0;
+		int Damage = 0;
+		int XP = 0;
 	
 		void PrintAll();
 		void InitPar(string, string, int, int, int);

@@ -150,12 +150,14 @@
   <ItemGroup>
     <ClCompile Include="includes\contas.cpp" />
     <ClCompile Include="includes\FileManipulation.cpp" />
+    <ClCompile Include="includes\GameMechanic.cpp" />
     <ClCompile Include="includes\user.cpp" />
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\contas.h" />
     <ClInclude Include="includes\FileManipulation.h" />
+    <ClInclude Include="includes\GameMechanic.h" />
     <ClInclude Include="includes\user.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
