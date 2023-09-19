@@ -2,6 +2,7 @@
 #include "GameMechanic.h"
 #include "user.h"
 #include "FileManipulation.h"
+#include "Enemies.h"
 
 //declaration for menu for it to be used insed any of the other functions
 void Menu(UserInfo& cUser);
@@ -11,21 +12,26 @@ void ClearBuffer() {
 	cin.ignore(1, '/n');
 }
 
+//there are placeholders here, must change latter (values for HEALTH, DAMAGE and XP definition)
 void Begin(UserInfo& cUser) {
 
-	string x;
+	string nam, cla;
 
 	cout << "Nomeie seu personagem: " << endl;
-	getline(cin, x);
-	cUser.ChangeName(x);
+	getline(cin, nam);
 
 	cout << "Nomeie sua classe: " << endl;
-	getline(cin, x);
-	cUser.ChangeClass(x);
+	getline(cin, cla);
 	
+	// 3 last values are placeholders - to be defined according to class
+	cUser.SaveAll(nam, cla, 20, 5, 0);
 
 	WriteFile_OUT(cUser.Name);
 	WriteFile_APP(cUser.Class);
+	//placeholder for writing this values
+	WriteFile_APP_INT(cUser.Health);
+	WriteFile_APP_INT(cUser.Damage);
+	WriteFile_APP_INT(cUser.XP);
 
 	system("CLS");
 
@@ -42,19 +48,26 @@ void ShowInfo(UserInfo& cUser) {
 		cout << "-----------------" << endl;
 		cout << "NOME: " << cUser.Name << endl 
 			 << "CLASSE: " << cUser.Class << endl
-			 << "VIDA: " << cUser.Health << endl;
+			 << "VIDA: " << cUser.Health << endl
+			 << "DANO: " << cUser.Damage << endl
+			 << "XP: " << cUser.XP << endl;
 		cout << "-----------------" << endl;
 	}
 	Menu(cUser);
 }
 
+//ready for modifications and crate battle sistem
 void EnemieFacing(UserInfo& cUser) {
 
 	int x;
+	CurrentEnemie FacingEnemie;
 
+	FacingEnemie.ChooseName(); 
+	
+	// modify all code here to fit a battle and show all values
 	cout << "Voce encontra um monstro, o que deseja fazer?" << endl;
 	cout << "----------------" << endl 
-		 << cUser.Name << endl;
+		 << FacingEnemie.Name << endl; // for now, only the name of the enemie is showing
 	cout << cUser.Class << endl 
 		 << "----------------" << endl;
 	cout << "O que voce fara?:" << endl;
@@ -65,6 +78,10 @@ void EnemieFacing(UserInfo& cUser) {
 	ClearBuffer();
 
 	switch (x){
+	case 1:
+		break;
+	case 2:
+		break;
 	case 3:
 		system("CLS");
 		Menu(cUser);
@@ -116,4 +133,7 @@ void Menu(UserInfo& cUser) {
 void GetPLayerInfo(UserInfo& cUser) {
 	cUser.Name = ReadFile(0);
 	cUser.Class = ReadFile(1);
+	cUser.Health = stoi(ReadFile(2));// stoi() is to turn the STRINGS to INTS
+	cUser.Damage = stoi(ReadFile(3));// stoi() is to turn the STRINGS to INTS
+	cUser.XP = stoi(ReadFile(4));// stoi() is to turn the STRINGS to INTS
 }

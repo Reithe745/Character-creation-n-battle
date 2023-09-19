@@ -149,6 +149,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="includes\contas.cpp" />
+    <ClCompile Include="includes\Enemies.cpp" />
     <ClCompile Include="includes\FileManipulation.cpp" />
     <ClCompile Include="includes\GameMechanic.cpp" />
     <ClCompile Include="includes\user.cpp" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\contas.h" />
+    <ClInclude Include="includes\Enemies.h" />
     <ClInclude Include="includes\FileManipulation.h" />
     <ClInclude Include="includes\GameMechanic.h" />
     <ClInclude Include="includes\user.h" />

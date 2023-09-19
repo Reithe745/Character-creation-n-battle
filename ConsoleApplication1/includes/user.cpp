@@ -8,7 +8,7 @@ void UserInfo::PrintAll() {
 	cout << "----------------------------------------" << endl;
 }
 
-void UserInfo::InitPar(string name, string clas, int health, int damage, int xp) {
+void UserInfo::SaveAll(string name, string clas, int health, int damage, int xp) {
 	Name = name;
 	Class = clas;
 	Health = health;
@@ -25,7 +25,7 @@ void UserInfo::ChangeClass(string x) {
 }
 
 void UserInfo::ChangeHealth(int x) {
-	Health -= x;
+	Health += x;
 }
 
 void UserInfo::ChangeDamage(int x) {

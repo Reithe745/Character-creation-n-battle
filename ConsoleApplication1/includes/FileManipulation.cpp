@@ -49,6 +49,15 @@ void WriteFile_APP(string x) {
 	CloseFile();
 }
 
+void WriteFile_APP_INT(int x) {
+
+	OpenFile_APP();
+
+	File << x << endl;
+
+	CloseFile();
+}
+
 string ReadFile(int op) {
 	string n = "";
 	int line = 0;
@@ -69,5 +78,12 @@ string ReadFile(int op) {
 
 	CloseFile();
 
-	return n;
+	// This lines are here just for the int values on the USER, if they recive nothing
+	// and the stoi() function receive them as "", it breaks the hole process...
+	if (n == "" && op >= 2) {
+		return "0";
+	}
+	else {
+		return n;
+	}
 }

@@ -9,9 +9,9 @@ class UserInfo {
 		int Health = 0;
 		int Damage = 0;
 		int XP = 0;
-	
+
 		void PrintAll();
-		void InitPar(string, string, int, int, int);
+		void SaveAll(string, string, int, int, int);
 		void ChangeName(string);
 		void ChangeClass(string);
 		void ChangeHealth(int);
