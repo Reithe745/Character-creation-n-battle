@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "user.h"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ public:
 	int XP;
 	
 	void ChooseName();
+	void DamageUser(CurrentEnemie&, UserInfo&);
 };
 
 class ENEMIE {

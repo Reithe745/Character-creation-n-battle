@@ -1,2 +1,5 @@
-yuri
-ladino
+cachorro
+cachorro
+20
+5
+0

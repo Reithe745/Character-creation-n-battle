@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include "FileManipulation.h"
+#include "user.h"
 using namespace std;
 
 fstream File;
@@ -86,4 +87,12 @@ string ReadFile(int op) {
 	else {
 		return n;
 	}
+}
+
+void MasterWrite(UserInfo& cUser) {
+	WriteFile_OUT(cUser.Name);
+	WriteFile_APP(cUser.Class);
+	WriteFile_APP_INT(cUser.Health);
+	WriteFile_APP_INT(cUser.Damage);
+	WriteFile_APP_INT(cUser.XP);
 }

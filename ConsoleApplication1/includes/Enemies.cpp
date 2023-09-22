@@ -1,4 +1,6 @@
 #include "Enemies.h"
+#include "user.h"
+#include "FileManipulation.h"
 #include <iostream>
 #include <random>
 
@@ -20,4 +22,9 @@ void CurrentEnemie::ChooseName() {
 	Health = One.Health[x];
 	Damage = One.Damage[x];
 	XP = One.XP[x];
+}
+
+void CurrentEnemie::DamageUser(CurrentEnemie& x, UserInfo& cUser) {
+	
+	cUser.ChangeHealth(x.Damage);
 }

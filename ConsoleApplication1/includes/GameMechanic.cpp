@@ -4,6 +4,8 @@
 #include "FileManipulation.h"
 #include "Enemies.h"
 
+CurrentEnemie FacingEnemie;
+
 //declaration for menu for it to be used insed any of the other functions
 void Menu(UserInfo& cUser);
 //end of declarations
@@ -26,12 +28,7 @@ void Begin(UserInfo& cUser) {
 	// 3 last values are placeholders - to be defined according to class
 	cUser.SaveAll(nam, cla, 20, 5, 0);
 
-	WriteFile_OUT(cUser.Name);
-	WriteFile_APP(cUser.Class);
-	//placeholder for writing this values
-	WriteFile_APP_INT(cUser.Health);
-	WriteFile_APP_INT(cUser.Damage);
-	WriteFile_APP_INT(cUser.XP);
+	MasterWrite(cUser);
 
 	system("CLS");
 
@@ -53,14 +50,12 @@ void ShowInfo(UserInfo& cUser) {
 			 << "XP: " << cUser.XP << endl;
 		cout << "-----------------" << endl;
 	}
-	Menu(cUser);
 }
 
 //ready for modifications and crate battle sistem
 void EnemieFacing(UserInfo& cUser) {
 
 	int x;
-	CurrentEnemie FacingEnemie;
 
 	FacingEnemie.ChooseName(); 
 	
@@ -68,7 +63,7 @@ void EnemieFacing(UserInfo& cUser) {
 	cout << "Voce encontra um monstro, o que deseja fazer?" << endl;
 	cout << "----------------" << endl 
 		 << FacingEnemie.Name << endl; // for now, only the name of the enemie is showing
-	cout << cUser.Class << endl 
+	cout << "Health: " << FacingEnemie.Health << endl
 		 << "----------------" << endl;
 	cout << "O que voce fara?:" << endl;
 	cout << " 1 - enfrentar" << endl
@@ -79,8 +74,16 @@ void EnemieFacing(UserInfo& cUser) {
 
 	switch (x){
 	case 1:
+		FacingEnemie.DamageUser(FacingEnemie, cUser);
+		MasterWrite(cUser);
+		system("CLS");
+		EnemieFacing(cUser);
 		break;
+	//placeholder for case 2
 	case 2:
+		system("CLS");
+		cout << "Sua vida: " << cUser.Health << endl;
+		EnemieFacing(cUser);
 		break;
 	case 3:
 		system("CLS");
@@ -113,6 +116,7 @@ void Menu(UserInfo& cUser) {
 	case 2:
 		system("CLS");
 		ShowInfo(cUser);
+		Menu(cUser);
 		break;
 	case 3:
 		if (cUser.Name != "") {
